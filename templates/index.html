@@ -3,48 +3,121 @@
 <html>
 <head>
     <title>KAPx Tutor</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/boilerplate.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-table.min.css">
+    <!--<link rel="stylesheet" href="/css/boilerplate.min.css">-->
+
     <link rel="stylesheet" href="/css/style.css">
 </head>
-  <body>
-
-    <form action="https://plus.google.com/hangouts/_" method="get">
-
-      <div><input type="hidden" name="gid" value="910459759135"></div>
-
-      <p>Select an available subject, then click <b>Launch Hangout</b> button.</p>
-      <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-4 column">
-                <div style="width: 300px">
-                    <table class="table" data-toggle="table" data-url="docs/subjects.json" data-height="275" data-click-to-select="true" data-single-select="true">
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-10 column">
+            <form action="https://plus.google.com/hangouts/_" method="get" target="_blank">
+                 <div class="table-wrapper">
+                    <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="subject">Subject</th>
-                                <th data-field="status" data-formatter="statusFormatter">Status</th>
-                                <th data-field="hangouturl" data-visible="false">Hangout</th>
-                            </tr>
+                        <tr>
+                            <th>Subject</th>
+                            <th colspan="2">Status</th>
+                            <th>Schedule</th>
+                        </tr>
                         </thead>
+                        <tbody>
+                        {% for subject in subjects_query %}
+                        <tr>
+                            <td>{{subject.subject}}</td>
+
+                            {% if subject.isAvailable %}
+                                <td style="color: #398439">Available</td>
+                                <td>
+                                        <button type="submit" class="btn btn-success btn-xs edit-movie-quote">
+                                            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+                                        </button>
+                                </td>
+                             {% else %}
+                                <td>Not Available</td>
+                                <td></td>
+                            {% endif %}
+                            <td>
+                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#schedule-modal">
+                                    Click for schedule &nbsp; <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
                     </table>
-                   <p>
-                        <input class="btn btn-info" type="submit" value="Launch Hangout">
-                   </p>
                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="schedule-modal" tabindex="-1" role="dialog" aria-labelledby="Tutor Schedule"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Tutor Hangout Schedule</h4>
+                </div>
+                     <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Days</th>
+                                <th>Time</th>
+                            </tr>
+                            </thead>
+                         <tbody>
+                         <tr>
+                             <td>Business</td>
+                             <td>M,W,F</td>
+                             <td>11am - 11pm</td>
+                         </tr>
+                         <tr>
+                             <td>General Math</td>
+                             <td>M,W,F</td>
+                             <td>11am - 11pm</td>
+                         </tr>
+                         <tr>
+                             <td>Technology</td>
+                             <td>M,W,F</td>
+                             <td>11am - 11pm</td>
+                         </tr>
+                         <tr>
+                             <td>Science</td>
+                             <td>M,W,F</td>
+                             <td>11am - 11pm</td>
+                         </tr>
+                         <tr>
+                             <td>Writing</td>
+                             <td>M,W,F</td>
+                             <td>11am - 11pm</td>
+                         </tr>
+                         </tbody>
+                     </table>
             </div>
         </div>
     </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
 
-
-    </form>
-
-     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="/js/bootstrap-table.min.js"></script>
-    <script src="/js/bs-table-formatter.js"></script>
-  </body>
+</body>
 </html>

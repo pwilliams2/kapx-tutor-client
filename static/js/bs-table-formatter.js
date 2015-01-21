@@ -6,7 +6,10 @@
         var isAvailable = (row.status == 'Available') ? true : false;
 
         if (isAvailable)
-           return statusUI = '<b style="color:green">' + value + '</b> ' ;
+           return statusUI = '<b style="color:green">' + value + '</b>&nbsp;&nbsp;&nbsp;&nbsp;'
+               + '<button type="submit" class="btn btn-success btn-xs" aria-label="Left Align">'
+               + '<span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></button>'
+               + '</button>';
         else
             return value;
         //return '<i class="glyphicon ' + icon + '"></i> ' + value;
