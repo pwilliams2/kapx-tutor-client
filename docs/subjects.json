@@ -1,0 +1,28 @@
+[
+      {
+        "subject": "Business",
+        "status": "Available",
+        "hangoutUrl" : "https://plus.google.com/hangouts/_"
+    },
+  {
+        "subject": "General Math",
+        "status": "Available",
+        "hangoutUrl" : "https://plus.google.com/hangouts/_"
+    },
+      {
+        "subject": "Calculus",
+        "status": "Not Available"
+    },
+    {
+        "subject": "Science",
+        "status": "Available"
+    },
+      {
+        "subject": "Writing",
+        "status": "Available"
+    },
+      {
+        "subject": "Technology",
+        "status": "Available"
+    }
+]

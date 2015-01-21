@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>KAPx Tutor</title>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/boilerplate.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+  <body>
+
+    <form action="https://plus.google.com/hangouts/_" method="get">
+
+      <div><input type="hidden" name="gid" value="910459759135"></div>
+
+      <p>Select an available subject, then click <b>Launch Hangout</b> button.</p>
+      <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-4 column">
+                <div style="width: 300px">
+                    <table class="table" data-toggle="table" data-url="docs/subjects.json" data-height="275" data-click-to-select="true" data-single-select="true">
+                        <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="subject">Subject</th>
+                                <th data-field="status" data-formatter="statusFormatter">Status</th>
+                                <th data-field="hangouturl" data-visible="false">Hangout</th>
+                            </tr>
+                        </thead>
+                    </table>
+                   <p>
+                        <input class="btn btn-info" type="submit" value="Launch Hangout">
+                   </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </form>
+
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-table.min.js"></script>
+    <script src="/js/bs-table-formatter.js"></script>
+  </body>
+</html>
