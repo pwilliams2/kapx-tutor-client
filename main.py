@@ -16,6 +16,8 @@
 #
 import logging
 import os
+import pprint
+from apiclient import discovery
 
 from google.appengine.ext import ndb
 import jinja2
@@ -23,7 +25,7 @@ import jinja2
 import webapp2
 from models.models import HangoutSubjects
 
-# Jinja environment instance necessary to use Jinja templates.
+# Jinja environment instance necessary to use Jinja views.
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
                                autoescape=True)
 
@@ -56,16 +58,16 @@ def load(self):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        subjects_query = HangoutSubjects.query().order(HangoutSubjects.subject).fetch()
+        subjects = HangoutSubjects.query().order(HangoutSubjects.subject).fetch()
 
-        if not subjects_query:
+        if not subjects:
             logging.info("no subjects")
             load(self)
-            subjects_query = HangoutSubjects.query().order(HangoutSubjects.subject).fetch()
+            subjects = HangoutSubjects.query().order(HangoutSubjects.subject).fetch()
 
-        template = jinja_env.get_template("templates/index.html")
-        self.response.out.write(template.render({'subjects_query' : subjects_query}))
-
+        template = jinja_env.get_template("views/index.html")
+        self.response.out.write(template.render({'subjects_query' : subjects}))
+        main()
 
 class DataHandler(webapp2.RequestHandler):
     def get(self):
@@ -80,3 +82,24 @@ app = webapp2.WSGIApplication([
                                   ('/', MainHandler),
                                   ('/data', DataHandler)
                               ], debug=True)
+
+def main():
+    # Build a service object for interacting with the API.
+    api_root = 'https://kx-tutor-hangout-app.appspot.com/_ah/api'
+    api = 'tutorhangouts'
+    version = 'v1'
+    discovery_url = '%s/discovery/v1/apis/%s/%s/rest' % (api_root, api, version)
+    service = discovery.build(api, version, discoveryServiceUrl=discovery_url)
+
+    # Fetch all subjects and print them out.
+    response = service.subjects().list().execute()
+    subjects = response.get('items', [])
+    for row in subjects:
+        print row['subject']
+
+    # TODO: convert dict to json to be sent to jinja
+    pprint.pprint(response)
+
+
+if __name__ == '__main__':
+  main()
