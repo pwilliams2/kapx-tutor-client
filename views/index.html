@@ -28,6 +28,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Subject</th>
                             <th colspan="2">Status</th>
                             <th>Schedule</th>
@@ -36,12 +37,13 @@
                         <tbody>
                         {% for subject in subjects_query %}
                         <tr>
-                            <td>{{subject.subject}}</td>
+                            <td><img class="img-thumbnail" src={{subject.image_url}}></td>
+                            <td class="text-middle">{{subject.subject}}</td>
 
-                            {% if subject.isAvailable %}
-                                <td style="color: #398439">Available</td>
+                            {% if subject.is_available %}
+                                <td style="color: #398439;">Available</td>
                                 <td>
-                                        <button type="submit" class="btn btn-success btn-xs edit-movie-quote">
+                                        <button type="submit" class="btn btn-success btn-xs edit-movie-quote" style="vertical-align: middle">
                                             <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
                                         </button>
                                 </td>
@@ -51,7 +53,7 @@
                             {% endif %}
                             <td>
                                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#schedule-modal">
-                                    Click for schedule &nbsp; <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    Click for schedule &nbsp; <span class="glyphicon glyphicon-time" aria-hidden="true" style="vertical-align: middle"></span>
                                 </button>
                             </td>
                         </tr>
