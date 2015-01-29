@@ -23,7 +23,6 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-10 column">
-            <form action="https://plus.google.com/hangouts/_" method="get" target="_blank">
                  <div class="table-wrapper">
                     <table class="table table-hover">
                         <thead>
@@ -43,10 +42,12 @@
                             {% if subject.is_available %}
                                 <td style="color: #398439;">Available</td>
                                 <td>
-                                        <button type="submit" class="btn btn-success btn-xs edit-movie-quote" style="vertical-align: middle">
+                                        <button type="button" class="btn btn-success btn-xs launch-hangout" style="vertical-align: middle">
                                             <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+                                            <div class="hidden gid">{{subject.gid}}</div>
                                         </button>
                                 </td>
+
                              {% else %}
                                 <td>Not Available</td>
                                 <td></td>
@@ -62,11 +63,10 @@
                         </tbody>
                     </table>
                 </div>
-            </form>
         </div>
     </div>
 </div>
-
+<div id="show"></div>
     <div class="modal fade" id="schedule-modal" tabindex="-1" role="dialog" aria-labelledby="Tutor Schedule"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -122,6 +122,6 @@
 <!-- Compiled and minified Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-
+<script src="js/tutor-client.js"></script>
 </body>
 </html>
