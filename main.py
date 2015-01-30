@@ -53,12 +53,3 @@ app = webapp2.WSGIApplication([
                               ('/', MainHandler)
                               ], debug=True)
 
-
-
-
-#   for row in items:
-#       print row['subject']
-#
-#
-#
-#
