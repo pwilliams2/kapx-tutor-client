@@ -1,10 +1,10 @@
 # Using redirect route instead of simple routes since it supports strict_slash
 # Simple route: http://webapp-improved.appspot.com/guide/routing.html#simple-routes
 # RedirectRoute: http://webapp-improved.appspot.com/api/webapp2_extras/routes.html#webapp2_extras.routes.RedirectRoute
-from webapp2 import Route
 from webapp2_extras.routes import RedirectRoute
+
 from web import handlers
-import utils
+
 
 secure_scheme = 'https'
 
