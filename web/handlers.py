@@ -28,7 +28,7 @@ class MainPage(BaseHandler):
         """ Retrieve available subjects        """
         try:
             resp, content = httplib2.Http().request(config.ENVIRONMENT_URL)
-            if content:
+            if resp.status == 200 and content:
                 return json.loads(content)
             else:
                 autolog("no subjects found")
