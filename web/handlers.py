@@ -8,10 +8,6 @@ from lib.base import BaseHandler
 from utils import autolog
 
 
-API_ROOT = 'https://kx-tutor-hangout-app.appspot.com/_ah/api'
-API_NAME = 'tutorhangouts'
-VERSION = 'v1'
-
 
 class MainPage(BaseHandler):
     def get(self):
