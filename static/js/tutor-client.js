@@ -13,7 +13,6 @@ function launchClientHangout(gid, subject) {
 $(".launch-hangout").click(function () {
     gid = $(this).find(".gid").text();
     subject = $(this).find(".subject").text();
-    //console.log("gid: " + gid + " subject:" + subject);
     launchClientHangout(gid, subject);
 });
 
