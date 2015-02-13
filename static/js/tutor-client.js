@@ -4,17 +4,17 @@
 
 var hangoutsBaseUrl = "https://talkgadget.google.com/hangouts/_/"  //gid is appended below at run-time
 
-function launchClientHangout(gid) {
-    var url = hangoutsBaseUrl + gid;
+function launchClientHangout(gid, subject) {
+    var url = hangoutsBaseUrl + gid + '&gd=' + subject;
     console.log('url: ' + url);
     window.open(url, "", "width=1002,height=700,location=0,menubar=0,scrollbars=1,status=1,resizable=0")
 }
 
 $(".launch-hangout").click(function () {
     gid = $(this).find(".gid").text();
-    //subject = $(this).find(".subject").text();
+    subject = $(this).find(".subject").text();
     //console.log("gid: " + gid + " subject:" + subject);
-    launchClientHangout(gid);
+    launchClientHangout(gid, subject);
 });
 
 function reload() {
