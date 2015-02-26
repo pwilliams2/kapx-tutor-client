@@ -11,9 +11,7 @@ from utils import autolog
 
 class MainPage(BaseHandler):
     def get(self):
-
         subjects = self.get_subjects()
-        print subjects
         if subjects:
             template_data = {'subjects_query': subjects}
             self.render_template('views/student.html', **template_data)
